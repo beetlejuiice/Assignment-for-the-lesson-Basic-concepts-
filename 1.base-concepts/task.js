@@ -22,13 +22,11 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     if (amount <= contribution || percent < 0 || countMonths <= 0) {
         return 0;
     }
-    
-    let monthlyPercent = (percent / 100) / 12;
-    let creditBody = amount - contribution;
-    let monthlyPayment = (creditBody * monthlyPercent) / 
-        (1 - Math.pow(1 + monthlyPercent, -countMonths));
-    let totalAmount = monthlyPayment * countMonths + contribution;
+    const monthlyPercent = (percent / 100) / 12;
+    const creditBody = amount - contribution;
+    const monthlyPayment = (creditBody * monthlyPercent) / (1 - Math.pow(1 + monthlyPercent, -countMonths));
+    const totalAmount = monthlyPayment * countMonths + contribution;
     return parseFloat(totalAmount.toFixed(2));
 }
-
 console.log(calculateTotalMortgage(6, 21, 5000000, 240));
+
